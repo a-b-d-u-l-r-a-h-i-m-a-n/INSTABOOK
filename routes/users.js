@@ -1,0 +1,11 @@
+const express=require('express');
+const router=express.Router();
+const passport=require('passport');
+const ueser_controler=require('../controllers/ueser_control');
+router.get('/profile',passport.checkAuthentication,ueser_controler.profile);
+router.get('/signin',ueser_controler.signin);
+router.get('/signup',ueser_controler.signup);
+router.get('/signout',ueser_controler.signout);
+router.post('/create_account',ueser_controler.create_account);
+router.post('/signin_pagehere',passport.authenticate('local',{failureRedirect:'/users/signin'}),ueser_controler.signin_pagehere);
+module.exports=router;

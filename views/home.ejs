@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+</head>
+<body>
+    <h1>post</h1>
+    <%if(user){%>
+    <form action="/posts/create" method="post">
+        <input type="text" name="post" placeholder="crete the post" required>
+        <input type="submit" name="submit">
+    </form>
+    <%}%>
+    <ul>
+        <% for(post of posts){%>
+            <li>
+                
+                <p><%if(user!=null && user.id==post.user.id){%>
+                    <a href="posts/delete/<%=post.id%>">X</a>
+                <%}%><%=post.content%></p>
+                <p><%=post.user.name%></p>
+                <%if(user){%>
+                    <form action="/comment/create" method="post">
+                        <input type="text" name="comment" placeholder="comment" required>
+                        <input type="hidden" name="post" value="<%=post._id%>">
+                        <input type="submit" name="submit">
+                    </form>
+                <%}%>
+                <div>
+                    <ul>
+                        <% for(comment of post.commentforpost){%>
+                            <li>
+                                <p><%if(user!=null && (post.user.id==user.id || user.id==comment.user.id)){%><a href="/comment/delete/<%=comment.id%>">X</a><%}%>
+                                    <%=comment.content%></p>
+                                <p><%=comment.user.name%></p>
+                            </li>  
+                        <%}%>
+                    </ul>
+                </div>
+            </li> 
+        <%}%>
+    </ul>
+    
+</body>
+</html>
