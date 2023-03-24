@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="/css/signup_pas.css">
 </head>
 <body>
-    <form action="/users/create_account" method="POST">
-        <input type="text" name="name" placeholder="enter the name" required>
-        <input type="text" name="email" placeholder="enter the eamil" required>
-        <input type="password" name="password" placeholder="enter the password" required>
-        <input type="password" name="confirmpassword" placeholder="confirm password" required>
-        <button id="signup--" type="submit"> sign up</button>
-    </form>
+    <div id="page_signup">
+        <h1>SIGNUP</h1>
+        <form action="/users/create_account" method="POST">
+            <input type="text" name="name" placeholder="enter the name" required>
+            <input type="text" name="email" placeholder="enter the eamil" required>
+            <input type="password" name="password" placeholder="enter the password" required>
+            <input type="password" name="confirmpassword" placeholder="confirm password" required>
+            <button id="signup--" type="submit"> sign up</button>
+        </form>
+    </div>
     <link rel="stylesheet" href="./signupjs.js">
 </body>
 </html>

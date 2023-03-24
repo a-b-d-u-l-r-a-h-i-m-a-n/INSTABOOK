@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="/css/signin_pas.css">
 </head>
 <body>
-   <form action="/users/signin_pagehere" method="post">
-    <input type="text" name="email" placeholder="Enter the email" required>
-    <input type="password" name="password" placeholder="Enter the password" required>
-    <button id="signin--" type="submit"> sign in</button>
-   </form>
+    <div id="page_signin">
+        <h1>SIGN IN</h1>
+        <form action="/users/signin_pagehere" method="post" style="margin: 0px;">
+            <input type="text" name="email" placeholder="Enter the email" required>
+            <input type="password" name="password" placeholder="Enter the password" required>
+            <button id="signin--" type="submit"> sign in</button>
+           </form>
+    </div>
    <script src="/js/signinjs.js"></script>
 </body>
 </html>

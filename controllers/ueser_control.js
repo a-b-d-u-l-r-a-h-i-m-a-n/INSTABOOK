@@ -1,20 +1,34 @@
-const express=require('express');
+const express=require('express');  
 const passport = require('passport');
 const User=require('../modals/user');
 module.exports.profile = async function(req, res){
   try{
-    const user=await User.findById(req.user._conditions._id);
-    if(user){
+    const user=await User.findById(req.params.id);
+    console.log(user);
         return res.render('profile_page', {
             title: 'User Profile',
-            user: user
-        });
-    }
+            profile_user: user,
+            user:await User.findById(req.user._conditions._id)
+    });
   }catch(err){
     console.log("errror",err);
     res.status(500).send("Internal Server Error");
   }
 }; 
+module.exports.update=async function(req,res){
+    try{
+        if(req.user._conditions._id==req.params.id){
+            await User.updateOne({_id:req.params.id}, { name: req.body.name,email:req.body.email});
+            // User.save();
+            return res.redirect("back");
+        }else{
+            return res.redirect("back");
+        }
+    }catch(err){
+        console.log(err);
+        return res.send("error while updating");
+    }
+}
 module.exports.signin=function(req,res){
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');

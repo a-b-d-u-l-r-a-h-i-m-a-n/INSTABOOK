@@ -8,5 +8,4 @@ router.use('/users',require('./users'));
 router.use('/not',require('./notifi'));
 router.use('/posts',require('./postsrout'));
 router.use('/comment',require("./commentsroute"));
-
 module.exports=router;

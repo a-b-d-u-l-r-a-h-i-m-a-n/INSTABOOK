@@ -3,16 +3,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/header.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Insta book</h1>
-    <%if(user){%>
-        <a href="users/profile"><%=user.name%></a>
-        <a href="users/signout">Sign Out</a>
-    <%}else{%>
-        <a href="users/signin">Sign in</a>
-        <a href="users/signup">Sign up</a>
-    <%}%>
+    <div id="header_main">
+        <div id="header_heading">
+            <h1>Insta book</h1>
+        </div>
+        <div id="header_user">
+            <h3>
+                <%if(user){%>
+                    <a href="/users/profile/<%=user._id%>"><%=user.name%></a>
+                    <a href="/users/signout">Sign Out</a>
+                <%}else{%>
+                    <a href="/users/signin">Sign in</a>
+                    <a href="/users/signup">Sign up</a>
+                <%}%>
+            </h3>
+        </div>
+    </div>
 </body>
 </html>

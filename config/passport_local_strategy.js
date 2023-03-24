@@ -44,7 +44,8 @@ passport.setAuthenticatedUser=async function (req,res,next){
     if(req.isAuthenticated()){
         const user=await User.findById(req.user._conditions._id);
         
-        res.locals=user;
+        req.locals=user;
+        // console.log(res)
         // console.log(res.locals);
     }
     next();

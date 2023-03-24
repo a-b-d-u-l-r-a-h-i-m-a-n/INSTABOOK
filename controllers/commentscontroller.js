@@ -5,7 +5,8 @@ const Commentsmain1=require("../modals/commnetsmodal");
 
 module.exports.createcomment=async function(req,res){
     try{
-        // console.log(req.body.comment);
+        
+
         const post= await Post.findById(req.body.post);
         if(post){
             await Commentsmain1.create({

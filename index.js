@@ -10,25 +10,17 @@ const db=require('./config/mongoose');
 const user=require('./modals/user');
 const posts=require("./controllers/post_controler");
 const cookieParser=require("cookie-parser");
-const { session } = require('passport');
 const expressEjsLayouts = require('express-ejs-layouts');
 const MongoStore =require('connect-mongo');
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static('./assets'));
 app.use(bodyparser.json());
 app.use(cookieParser());
-app.use(expressEjsLayouts)
-// app.use(express.urlencoded({extended: true}));
-// app.use(express.urlencoded());
 app.set('view engine','ejs');
 app.set('views','./views');
+app.use(expressEjsLayouts);
 app.set('layout extraStyles',true);
 app.set('layout extraScripts',true);
-//mpngo store 
-// const options = {
-//     mongoUrl: 'mongodb://127.0.0.1:27017/test', // replace with your MongoDB connection string
-//     collectionName: 'express_session'
-//   };
 app.use(express_session({
     name:'socialmedia_app',
     secret:"ghdhgdghjcgj",
@@ -42,10 +34,6 @@ app.use(express_session({
             mongoUrl: "mongodb://127.0.0.1:27017/test"
         }
     )
-    //     function(err){
-    //         console.log(err ||  'connect-mongodb setup ok');
-    //     }
-    // )
 }));
 app.use(passport.initialize());
 app.use(passport.session());

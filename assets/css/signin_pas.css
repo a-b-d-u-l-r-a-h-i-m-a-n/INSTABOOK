@@ -1,4 +1,7 @@
 body{
-    background-color: yellow;
+    background-color: white;
+}
+#page_signin{
+    margin-top: 250px;
     text-align: center;
 }

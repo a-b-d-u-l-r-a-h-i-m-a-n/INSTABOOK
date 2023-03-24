@@ -1,0 +1,30 @@
+body{
+    margin: 0px;
+}
+#header_main{
+    display: flex;
+    background-color: rgb(100, 100, 235);
+    height: 50px;
+    width: 100%;
+}
+#header_heading{
+    flex: 70%;
+    padding-left: 30px;
+}
+#header_heading h1{
+    color: white;
+    margin: 0px;
+}
+#header_user{
+    flex: 30%;
+    color: black;
+    text-align: center;
+}
+#header_user h3{
+    margin: 0px;
+    text-align: center;
+    padding-top: 10px;
+}
+#header_user h3 a{
+    color: white;
+}
