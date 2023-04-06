@@ -12,6 +12,11 @@ const posts=require("./controllers/post_controler");
 const cookieParser=require("cookie-parser");
 const expressEjsLayouts = require('express-ejs-layouts');
 const MongoStore =require('connect-mongo');
+const flash=require("connect-flash");
+const customeware=require("./config/myownmw");
+
+
+
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static('./assets'));
 app.use(bodyparser.json());
@@ -38,6 +43,8 @@ app.use(express_session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customeware.setFlash);
 app.use('/',require('./routes'));
 // const post_controller=require("./controllers/post");
 // app.get('/post',post_controller.post);

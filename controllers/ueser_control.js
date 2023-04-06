@@ -64,6 +64,7 @@ module.exports.create_account =async function(req,res){
     }
 };
 module.exports.signin_pagehere=async function(req,res){
+        req.flash("success","logged in successfully");
         return res.redirect('/');
 };
 module.exports.signout= async function(req,res){
@@ -72,6 +73,7 @@ module.exports.signout= async function(req,res){
         console.log(err+" error while log out");
         return;
       }
+      req.flash("success","logged out successfully");
       return res.redirect('/');
      });
 };

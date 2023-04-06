@@ -4,12 +4,16 @@
             <%= title  %>
         </title>
         <link rel="stylesheet" href="/css/layout.css">
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     </head>
 
     <body>
         <%- include('_header');%>
-
+        <% if(flash.success && flash.success.length>0){%>
+            <h4>
+                <%=flash.success%>
+            </h4>
+        <%}%>
         <%- body %>
 
 

@@ -1,3 +1,18 @@
 body{
     background-color:white;
 }
+#home_{
+    display: flex;
+}
+#post_section{
+    flex: 60%;
+    padding-left: 50px;
+}
+#home_profile{
+    flex: 20%;
+    padding-left: 50px;
+}
+#friends_section{
+    flex: 20%;
+    padding-left: 50px;
+}

@@ -12,6 +12,8 @@ const commentSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Post"
     }
+},{
+    timestamps:true
 });
 const commentsmain=mongoose.model("comment",commentSchema)
 module.exports=commentsmain;

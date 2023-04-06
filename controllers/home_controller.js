@@ -6,7 +6,7 @@ const comments=require("../modals/commnetsmodal");
 module.exports.home=async function(req,res){
     try{
         // console.log(req.locals);
-        const posts=await Post.find({}).populate('user').populate({
+        const posts=await Post.find({}).sort("-createdAt").populate('user').populate({
             path:'commentforpost',
             populate:{
                 path:'user'

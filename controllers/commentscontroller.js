@@ -29,10 +29,11 @@ module.exports.delete=async function(req,res){
         const cmont=await Commentsmain1.findById(id);
         // console.log(cmont.user==req.user._conditions._id);
         if(cmont.user==req.user._conditions._id){
-            // console.log("abdul");
-            const pid=cmont.post;
+            // console.log(cmont);
+            const pid=cmont.post.toString();
+            // console.log(pid);
             await Commentsmain1.findByIdAndDelete(id);
-            await Post.findByIdAndUpdate(pid,{$pull: {commentforpost:{ _id: id }} });
+            await Post.findByIdAndUpdate(pid,{$pull: {commentforpost:id }});
             return res.redirect('back');
         }else{
             return res.redirect('back');

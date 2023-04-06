@@ -6,20 +6,24 @@
     <title><%= title%></title>
 </head>
 <body>
-    <div id="post_Section">
+    <div id="home_">
+        <div id="home_profile">
+            profile page
+        </div>
+        <hr>
+            <div id="post_Section">
         <h1>post</h1>
         <%if(user){%>
-        <form action="/posts/create" method="post">
+        <form action="/posts/create" method="post" id="newpost_form">
             <input type="text" name="post" placeholder="crete the post" required>
             <input type="submit" name="submit">
         </form>
         <%}%>
-        <ul>
+        <ul id="listofpost_container">
             <% for(post of posts){%>
-                <li>
-                    
+                <li id="postlist_1<%=post._id%>">
                     <p><%if(user!=null && user.id==post.user.id){%>
-                        <a href="/posts/delete/<%=post.id%>">X</a>
+                        <a class="deletepost_1S"  href="/posts/delete/<%=post.id%>">X</a>
                     <%}%><%=post.content%></p>
                     <p><%=post.user.name%></p>
                     <%if(user){%>
@@ -44,6 +48,7 @@
             <%}%>
         </ul>
     </div>
+    <hr>
     <div id="friends_section">
         <ul>
             <%if(friends!=null){%>
@@ -56,5 +61,7 @@
             <%}%>
         </ul>
     </div>
+</div>
+<script src="/js/home.js"></script>
 </body>
 </html>
