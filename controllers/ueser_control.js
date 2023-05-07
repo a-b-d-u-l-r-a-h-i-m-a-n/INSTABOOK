@@ -20,6 +20,7 @@ module.exports.update=async function(req,res){
         if(req.user._conditions._id==req.params.id){
             await User.updateOne({_id:req.params.id}, { name: req.body.name,email:req.body.email});
             // User.save();
+            req.flash("success","profile updated successfully");
             return res.redirect("back");
         }else{
             return res.redirect("back");
@@ -50,7 +51,8 @@ module.exports.signup=function(req,res){
 // render the sign up page
 module.exports.create_account =async function(req,res){
     if(req.body.password!=req.body.confirmpassword){
-        return res.rendirect('back');
+        req.flash("error","password not matched");
+        return res.redirect('back');
     }
     const user1=User.findOne({email: req.body.email});
     if(user1){

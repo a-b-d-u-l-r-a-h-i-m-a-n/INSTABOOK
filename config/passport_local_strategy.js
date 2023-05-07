@@ -1,21 +1,23 @@
 const passport=require("passport");
 const Localstrategy=require('passport-local').Strategy;
 const User = require("../modals/user");
-passport.use(new Localstrategy({usernameField:'email'},async function(email,password,done){
+passport.use(new Localstrategy({usernameField:'email',passReqToCallback:true},async function(req,email,password,done){
     try{
         const user4=await User.findOne({email:email});
         if(user4){
             if(user4.password!=password){
-                console.log("user not exist ");
+                console.log(req)
+                req.flash("error","Invalid Username/Password");
                 return done(null,false);
             }else{
                 return done(null,user4);
             }
         }else{
+            req.flash("error","Invalid Username/Password");
             return done(null,false);
         }
     }catch(err){
-        console.log(err);
+        req.flash("error",err);
         return done(err);
     }
 }));

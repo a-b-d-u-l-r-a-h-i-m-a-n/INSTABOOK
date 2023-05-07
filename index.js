@@ -46,10 +46,6 @@ app.use(passport.setAuthenticatedUser);
 app.use(flash());
 app.use(customeware.setFlash);
 app.use('/',require('./routes'));
-// const post_controller=require("./controllers/post");
-// app.get('/post',post_controller.post);
-// const ueser_controler=require('./controllers/ueser_control');
-
 
 
 

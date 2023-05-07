@@ -10,6 +10,7 @@ module.exports.create=async function(req,res){
             });
             poat=await Post.findById(poat._id).populate('user');
             if(req.xhr){
+                req.flash("success","post added successfully");
                 return res.status(200).json({
                     data:{
                         post:poat,
@@ -32,9 +33,9 @@ module.exports.delete=async function(req,res){
             // console.log(post.user._id,req.user._conditions._id);
             await Post.findByIdAndDelete(req.params.id);
             await Comments.deleteMany({post:req.params.id});
-            console.log(req.xhr)
             if(req.xhr){
                 console.log("here is the xhr");
+                req.flash("success","Post ans associated comments deleted");
                 return res.status(200).json({
                     data:{
                         post_id:req.params.id
@@ -42,12 +43,13 @@ module.exports.delete=async function(req,res){
                     message:"post deleted"
                 });
             };
+            req.flash("success","Post ans associated comments deleted");
             return res.redirect('back');
         }else{
             return res.redirect('back');
         }
     }catch(err){
-        console.log(err);
+        req.flash("error",err);
         return res.send("post delete error");
     }
 }
