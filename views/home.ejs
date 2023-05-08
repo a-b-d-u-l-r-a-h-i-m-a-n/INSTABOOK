@@ -8,7 +8,10 @@
 <body>
     <div id="home_">
         <div id="home_profile">
-            profile page
+            <%if(user){%>
+                <img src="<%=user.avatar%>" alt="<%=user.name%>" width="100px">
+                <h4><%=user.name%></h4>
+                <%}%>
         </div>
         <hr>
             <div id="post_Section">
@@ -55,7 +58,7 @@
              <h2>Friends</h2>
             <% for(friend of friends){%>
                 <li>
-                    <a href="/users/profile/<%=friend._id%>"><%=friend.name%></a>
+                    <a href="/users/profile/<%=friend._id%>" style="text-decoration: none;"><%=friend.name%></a>
                 </li>
             <%}%>
             <%}%>

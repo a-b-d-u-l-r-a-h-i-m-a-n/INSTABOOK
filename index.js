@@ -21,6 +21,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static('./assets'));
 app.use(bodyparser.json());
 app.use(cookieParser());
+app.use('/uploads',express.static(__dirname+'/uploads'));
 app.set('view engine','ejs');
 app.set('views','./views');
 app.use(expressEjsLayouts);

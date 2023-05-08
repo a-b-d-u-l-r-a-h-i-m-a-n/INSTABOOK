@@ -9,16 +9,19 @@
 <body>
     <div id="header_main">
         <div id="header_heading">
-            <h1>Insta book</h1>
+           <a href="/" style="text-decoration:none"> <h1>Insta book</h1></a>
         </div>
         <div id="header_user">
             <h3>
                 <%if(user){%>
-                    <a href="/users/profile/<%=user._id%>"><%=user.name%></a>
-                    <a href="/users/signout">Sign Out</a>
+                    <a href="/users/profile/<%=user._id%>" style="text-decoration:none"><%=user.name%></a>
+                    <span>|</span>
+                    <a href="/users/signout" style="text-decoration:none">Sign Out</a>
+                    
                 <%}else{%>
-                    <a href="/users/signin">Sign in</a>
-                    <a href="/users/signup">Sign up</a>
+                    <a href="/users/signin" style="text-decoration:none">Sign in</a>
+                    <span>|</span>
+                    <a href="/users/signup" style="text-decoration:none">Sign up</a>
                 <%}%>
             </h3>
         </div>

@@ -1,5 +1,7 @@
 const express=require('express');  
 const passport = require('passport');
+const fs=require('fs');
+const path=require('path');
 const User=require('../modals/user');
 module.exports.profile = async function(req, res){
   try{
@@ -18,8 +20,22 @@ module.exports.profile = async function(req, res){
 module.exports.update=async function(req,res){
     try{
         if(req.user._conditions._id==req.params.id){
-            await User.updateOne({_id:req.params.id}, { name: req.body.name,email:req.body.email});
+            // await User.updateOne({_id:req.params.id}, { name: req.body.name,email:req.body.email});
             // User.save();
+            let user11=await User.findById(req.params.id);
+            User.uploadedAvatar(req,res,function(err){
+                if(err){console.log(err);}
+                user11.name=req.body.name;
+                user11.email=req.body.email;
+                if(req.file){
+
+                    if(user11.avatar){
+                        fs.unlinkSync(path.join(__dirname,'..',user11.avatar))
+                    }
+                    user11.avatar=User.avatarpath+'/'+req.file.filename; 
+                }
+                user11.save();
+            });
             req.flash("success","profile updated successfully");
             return res.redirect("back");
         }else{
